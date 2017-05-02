@@ -1,30 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Having this doesn't really do anything...
+// constructor(props) {
+//   super(props);
+// }
 
-class Link extends React.Component {
+// This component could easily be a stateless component
+const Link = ({ url, label, removeLink, index }) => {
 
-  constructor(props) {
-    super(props);
+  // This is what "Fat Arrow" syntax is good at! It automatically binds'this'
+  const handleClick = (e) => {
+    e.preventDefault()
+    removeLink(index);
   }
 
-  buttonClicked(e) {
-    e.preventDefault();
-    this.props.removeLink(this.props.index);
-  }
-
-  render() {
-    return (
-      <div>
-        • <a href={ this.props.url } target="_blank">{ this.props.label }</a>
-        <button onClick={ this.buttonClicked.bind(this) }>remove!</button>
-      </div>
-    );
-  }
+  return (
+    <div>
+      • <a href={ url } target="_blank">{ label }</a>
+      <button onClick={ handleClick }>remove!</button>
+    </div>
+  );
 };
 
 Link.propTypes = {
   removeLink: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired
 };
 
