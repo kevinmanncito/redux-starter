@@ -1,4 +1,4 @@
-#Simple React Starter
+# Simple React/Redux App
 
 Okay, you know the drill:
 
@@ -12,5 +12,3 @@ That will get the dev server up and running at `localhost:8080`. If you want to 
 ```
 npm run build
 ```
-
-Thats basically it. I just wanted a simple (yet modern) react setup that I understood.
