@@ -1,9 +1,9 @@
 import { combineReducers, createStore } from 'redux'
-import linkReducer from './link'
+import links, * as fromLink from './link' // Import all the selectors
 // ... import all your reducers here
 
 const reducers = combineReducers({
-  linkReducer,
+  links,
   // ... Put all aditional reducers here
 })
 
@@ -16,3 +16,7 @@ const store = createStore(
 
 
 export default store
+
+// We call getLinks from the 'fromLink' reducer file and pass it a reference to the part of state
+// that links exists at
+export const getLinks = (state) => fromLink.getLinks(state.links)
