@@ -35,7 +35,14 @@ var config = {
         include: APP_DIR,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: [
+            'css-loader', 
+            {
+              loader: 'postcss-loader',
+              options: { plugins: [require('autoprefixer')({ browsers: ['last 2 versions'] })] }
+            },
+            'sass-loader'
+          ]
         })
       },
       {
