@@ -7,6 +7,9 @@ import Link from '../components/Link';
 import AddLinkForm from '../components/AddLinkForm';
 import style from '../sass/main.scss';
 
+import { getLinks } from '../reducers'
+// or you could import from ../reducers/links and remove the export getLinks from reducer/index.js
+
 // Alway go with stateless components if you can. React can make a lot performance improvements.
 // If you need state, then try and keep it as isolated as posible. So if you're header had a drop down or something,
 // keep the state in the header component.
@@ -31,8 +34,8 @@ const App = ({ dispatch, links, addLink, removeLink }) => (
 
 const mapStateToProps = state => (
   {
-    // I can tell you more about this if you want, but use whats called selectors when ever you grab something off of state
-    links: state.linkReducer.links
+    // Call get Links and pass it a ref to state and let it do its thing. You now have links from state
+    links: getLinks(state)
   }
 );
 
